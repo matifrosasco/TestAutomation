@@ -13,7 +13,7 @@ class page {
 	}
 
 	public void searchProdcut(){ 
-		WebElement searchProduct = driver.findElement(By.id("cb1-edit")); //caja de busqueda
+		WebElement searchProduct = driver.findElement(By.id("cb1-edit")); //caja de busqued
 		
 	}
 }
