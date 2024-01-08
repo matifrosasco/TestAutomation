@@ -9,12 +9,13 @@ class page {
 
 	
 	public void obtenerUrl() { //derivar a la pagina
-		driver.get("\"https://www.mercadolibre.com.ar/#from=homecom\"");
+		driver.get("https://www.youtube.com");
 	}
 
 	public void searchProdcut(){ 
 		WebElement searchProduct = driver.findElement(By.id("cb1-edit")); //caja de busqued
 		
 	}
+	
 }
-//driver.manage().window().maximize();dffdfdfdf
+//driver.manage().window().maximize();
