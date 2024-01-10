@@ -12,10 +12,10 @@ class page {
 		driver.get("https://www.youtube.com");
 	}
 
-	public void searchProdcut(){ 
-		WebElement searchProduct = driver.findElement(By.id("cb1-edit")); //caja de busqued
+	public void searchProdcut(String busqueda){ 
+		driver.findElement(By.name("search_query")).sendKeys(busqueda); //caja de busqued
 		
 	}
-	
 }
+
 //driver.manage().window().maximize();

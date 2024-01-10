@@ -13,7 +13,8 @@ public class proyect {
 		WebDriver driver =new ChromeDriver();
 		page test = new page();
 		
-		test.obtenerUrl();
+		test.obtenerUrl(); //nos lleva a youtube
+		test.searchProdcut("Mejores goles 2023"); //caja de busqueda
 		//test.searchProdcut();}
 		
 	}
