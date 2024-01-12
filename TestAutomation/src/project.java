@@ -6,7 +6,7 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class proyect {
+public class project {
 
 	public static void main(String[] args) {
 		System.setProperty("webdriver.Chrome",
@@ -18,7 +18,7 @@ public class proyect {
 
 		test.obtenerUrl(); // nos lleva a youtube
 		test.maximzar();
-		test.searchProdcut("Mejores goles 2023"); // caja de busqueda
+		test.searchProduct("Mejores goles 2023"); // caja de busqueda
 		// test.searchProdcut();}
 
 	}

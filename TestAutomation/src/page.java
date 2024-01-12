@@ -21,7 +21,7 @@ class page {
 		driver.manage().window().maximize(); 
 	}
 	//caja de busqueda
-	public void searchProdcut(String busqueda){ 
+	public void searchProduct(String busqueda){ 
 		driver.findElement(By.name("search_query")).sendKeys(busqueda); 
 		
 	}
