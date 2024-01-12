@@ -5,17 +5,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 class page {
 
-	WebDriver driver =new ChromeDriver();
+	WebDriver driver;
 
-	
-	public void obtenerUrl() { //derivar a la pagina
+    // Constructor que recibe un WebDriver (ChromeDriver)
+    public page(WebDriver driver) {
+        this.driver = driver;
+    }
+
+	//derivar a la pagina
+	public void obtenerUrl() { 
 		driver.get("https://www.youtube.com");
 	}
-
+	//maximizar la pagina
+	public void maximzar() {
+		driver.manage().window().maximize(); 
+	}
+	//caja de busqueda
 	public void searchProdcut(String busqueda){ 
-		driver.findElement(By.name("search_query")).sendKeys(busqueda); //caja de busqued
+		driver.findElement(By.name("search_query")).sendKeys(busqueda); 
 		
 	}
+	
 }
 
-//driver.manage().window().maximize();
