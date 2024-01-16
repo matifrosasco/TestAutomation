@@ -16,6 +16,7 @@ public class VideoPage {
     }
 
     // Métodos para interactuar con la página del video
+    
     public void maximizeVideo() {
         // Espera a que el video inicie
         WebDriverWait waitVideoStart = new WebDriverWait(driver, 20);
