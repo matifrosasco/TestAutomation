@@ -3,14 +3,20 @@
   <groupId>cleartrip</groupId>
   <artifactId>cleartrip</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-<dependencies>
-	 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-		<dependency>
-    		<groupId>org.seleniumhq.selenium</groupId>
-    		<artifactId>selenium-java</artifactId>
-    		<version>4.16.1</version>
-		</dependency> 
-	</dependencies>
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>4.16.1</version>
+	</dependency>
+	<!-- Selenium -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>3.141.59</version>
+    </dependency> 
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
