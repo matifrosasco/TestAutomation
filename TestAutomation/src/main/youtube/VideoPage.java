@@ -15,46 +15,48 @@ public class VideoPage {
         this.driver = driver;
     }
 
-    // Métodos para interactuar con la página del video
+    // Methods to interact with the video page
     
     public void maximizeVideo() {
-        // Espera a que el video inicie
+        // Wait for the video to start
         WebDriverWait waitVideoStart = new WebDriverWait(driver, 20);
         waitVideoStart.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".html5-video-container video")));
 
-        // Ejecuta JavaScript para poner el video en pantalla completa
+        // Run JavaScript to make the video full screen
         ((JavascriptExecutor) driver).executeScript("document.querySelector('.ytp-fullscreen-button').click()");
     }
 
     public void configureVideoSettings() {
-        // Espera a que el botón de configuración esté presente y haz clic en él
+        // Wait for the settings button to be present and click on it
         WebDriverWait waitSettings = new WebDriverWait(driver, 10);
         WebElement settingsIcon = waitSettings.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".ytp-settings-button")));
         settingsIcon.click();
 
-        // Espera hasta que la opción de calidad esté presente y haz clic en ella
+        // Wait until the quality option is present and click on it
         WebDriverWait waitQuality = new WebDriverWait(driver, 10);
         WebElement qualityOption = waitQuality.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#ytp-id-18 > div > div > div:nth-child(4)")));
         qualityOption.click();
 
-        // Espera a que aparezcan las opciones de calidad
+        // Wait for the quality options to appear
         WebDriverWait waitQualityOptions = new WebDriverWait(driver, 10);
         waitQualityOptions.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"ytp-id-18\"]/div/div/div[4]")));
 
-        // Selecciona la calidad HD (1080p)
+        // Select HD quality (1080p)
         WebElement hdOption = driver.findElement(By.xpath("//span[text()='1080p']"));
         hdOption.click();
     }
 
     public void disableAutoPlay() {
-        // Espera hasta que el botón de reproducción automática esté presente
+    	
+        // Wait until the autoplay button is present
         WebDriverWait waitAutoPlay = new WebDriverWait(driver, 10);
         WebElement autoPlay = waitAutoPlay.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls > button:nth-child(2) > div")));
         autoPlay.click();
     }
 
     public void waitForVideoToEnd() {
-        // Espera hasta que el tiempo actual de reproducción alcance la duración total del video
+    	
+        // Wait until the current playback time reaches the total length of the video
         WebDriverWait waitVideoEnd = new WebDriverWait(driver, 300); // 300 segundos (ajusta según la duración esperada del video)
         waitVideoEnd.until((WebDriver webDriver) -> {
             JavascriptExecutor jsExecutor = (JavascriptExecutor) webDriver;
