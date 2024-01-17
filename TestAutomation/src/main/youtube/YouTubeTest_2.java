@@ -16,32 +16,35 @@ public class YouTubeTest_2 {
      	WebDriver driver = null;
 
         try {
-            // Configura la ubicación del controlador de Chrome
+            // Set the location of the Chrome driver
             System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
 
-            // Inicia el navegador Chrome
+            // Start the Chrome browser
             driver = new ChromeDriver();
 
-            // Maximiza la ventana del navegador
+            // Maximize the browser window
             driver.manage().window().maximize();
 
-            // Crear instancias de las páginas
+            // Create page instances
             YouTubeHomePage homePage = new YouTubeHomePage(driver);
             KidsPage kidsPage = new KidsPage(driver);
 
-            // Abre la página de YouTube
+            // Open the YouTube page
             homePage.openHomePage("https://www.youtube.com/");
-
-            // Abre el menú lateral
-            homePage.selectMenuIcon();
+                    
+            // Look for the link to the YouTube Kids page and click
+            homePage.navigateToYouTubeKids();
+                                  
+            // Select the button "Soy Un Niño"
+            kidsPage.selectSoyUnNino();
             
-            // Busca el link hacia la página YouTube Kids y hace click 
+            Thread.sleep(5000);
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (driver != null) {
-                // Cierra el navegador
+                // Close the browser
                 driver.quit();
             }
         }

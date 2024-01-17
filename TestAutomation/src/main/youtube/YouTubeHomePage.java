@@ -17,53 +17,60 @@ public class YouTubeHomePage {
         this.driver = driver;
     }
 
-    // Métodos para interactuar con la página principal
+    // Methods to interact with the home page
     
-    // Abrir la página principal
+    // Open the home page
     public void openHomePage(String url) {
         driver.get(url);
     }
     
-    // Abrir el menú lateral    
+    // Open side menú   
     public void selectMenuIcon() {
         // Espera hasta que el ícono de menu sea visible e interactuable
     	WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement menuIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/ytd-app/div[1]/div/ytd-masthead/div[4]/div[1]/yt-icon-button[2]")));
         menuIcon.click();
     }
-    
-    /*/ Desplázate hacia abajo para asegurarte de que el enlace a YouTube Kids sea visible
-    scrollDown();
-    
-    // Espera a que aparezca el enlace a YouTubeKids y haz clic en él
-    By youTubeKidsLinkSelector = By.linkText("YouTube Kids");
-    WebElement youTubeKidsLink = wait.until(ExpectedConditions.visibilityOfElementLocated(youTubeKidsLinkSelector));
-    youTubeKidsLink.click(); */
-    
-    
+        
+    public void navigateToYouTubeKids() {
+    	
+        // Scroll down to make sure the link to YouTube Kids is visible
+    	WebElement sideMenu = driver.findElement(By.xpath("/html/body/ytd-app/div[1]/div/ytd-masthead/div[4]/div[1]/yt-icon-button[2]"));
+    	scrollDown(sideMenu);
+
+        // Wait for the link to YouTube Kids to appear and click on it
+        By youTubeKidsLinkSelector = By.linkText("YouTube Kids");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement youTubeKidsLink = wait.until(ExpectedConditions.visibilityOfElementLocated(youTubeKidsLinkSelector));
+        youTubeKidsLink.click();
+    }
+            
     public void searchVideo(String searchQuery) {
         WebElement searchBox = driver.findElement(By.name("search_query"));
         searchBox.sendKeys(searchQuery);
         searchBox.sendKeys(Keys.ENTER);
 
-        // Espera hasta que los resultados de búsqueda se carguen
+        // Wait until the search results load
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("contents")));
     }
 
     public void selectFirstVideo() {
-        // Espera hasta que el primer video sea visible
+    	
+        // Wait until the first video is visible
         WebDriverWait waitVideo = new WebDriverWait(driver, 10);
         WebElement firstVideoContainer = waitVideo.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='contents']//ytd-video-renderer[1]//a[@id='thumbnail']")));
 
-        // Selecciona el primer video
+        // Select the first video
         firstVideoContainer.click();
     }
     
-    // Método para hacer scroll down en la página
-    private void scrollDown() {
-        // Puedes ajustar la cantidad de desplazamiento según tus necesidades
+    // Method to scroll down the page that accepts an element as parameter
+    private void scrollDown(WebElement element) {
+    	
+        // You can adjust the amount of scrolling according to your needs
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 500)");
+        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("window.scrollBy(0, 100)");
     }
 }

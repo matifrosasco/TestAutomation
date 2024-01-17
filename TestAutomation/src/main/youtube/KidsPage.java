@@ -15,6 +15,17 @@ public class KidsPage {
         this.driver = driver;
     }
 
-    // Métodos para interactuar con la página YouTubeKids
+    // Methods to interact with YouTube Kids page
+    
+    // Select the option "Soy Un Niño"
+    public void selectSoyUnNino() {
+    	// Wait until the "Soy Un Niño" is visible
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement soyUnNinoButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='kid-button']")));
+
+        // Select the first video
+        soyUnNinoButton.click();
+    }
+    
     
 }
